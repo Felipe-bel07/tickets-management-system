@@ -1,0 +1,406 @@
+/* ============================================================
+   Variables globales de diseño
+   ============================================================ */
+:root {
+  --primary:        #3b82f6;
+  --primary-hover:  #2563eb;
+  --secondary:      #6b7280;
+  --danger:         #ef4444;
+  --danger-hover:   #dc2626;
+  --success:        #16a34a;
+  --warning:        #d97706;
+  --info:           #0891b2;
+  --dark:           #1f2937;
+  --light:          #f9fafb;
+  --white:          #ffffff;
+  --border:         #d1d5db;
+  --text:           #111827;
+  --text-muted:     #6b7280;
+  --shadow-sm:      0 1px 3px rgba(0,0,0,.10);
+  --shadow-md:      0 4px 16px rgba(0,0,0,.14);
+  --radius:         8px;
+  --radius-sm:      4px;
+  --transition:     0.2s ease;
+}
+
+/* ============================================================
+   Reset y base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f3f4f6;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============================================================
+   Páginas de autenticación (login / register)
+   ============================================================ */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.auth-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px;
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--dark);
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Formularios
+   ============================================================ */
+.form-group { margin-bottom: 14px; }
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  background-color: var(--white);
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+}
+
+textarea.form-control { resize: vertical; min-height: 80px; }
+
+/* ============================================================
+   Botones
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary  { background: var(--primary);   color: var(--white); border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+
+.btn-secondary { background: var(--secondary); color: var(--white); border-color: var(--secondary); }
+.btn-secondary:hover { background: #4b5563; border-color: #4b5563; }
+
+.btn-danger    { background: var(--danger);    color: var(--white); border-color: var(--danger); }
+.btn-danger:hover { background: var(--danger-hover); }
+
+.btn-outline-primary {
+  background: transparent; color: var(--primary); border-color: var(--primary);
+}
+.btn-outline-primary:hover { background: var(--primary); color: var(--white); }
+
+.btn-outline-danger {
+  background: transparent; color: var(--danger); border-color: var(--danger);
+}
+.btn-outline-danger:hover { background: var(--danger); color: var(--white); }
+
+.btn-outline-light {
+  background: transparent; color: var(--white); border-color: rgba(255,255,255,.45);
+}
+.btn-outline-light:hover { background: rgba(255,255,255,.12); }
+
+.btn-sm    { padding: 4px 10px; font-size: 0.8rem; }
+.btn-block { width: 100%; }
+
+/* ============================================================
+   Alertas
+   ============================================================ */
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+}
+
+.alert-danger  { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+.alert-success { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+.alert-info    { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+
+.d-none { display: none !important; }
+
+/* ============================================================
+   Navbar del dashboard
+   ============================================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--dark);
+  padding: 12px 24px;
+  color: var(--white);
+}
+
+.navbar-brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-user {
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+/* ============================================================
+   Cuerpo del dashboard
+   ============================================================ */
+.dashboard-body { padding: 24px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ============================================================
+   Tabla
+   ============================================================ */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  font-size: 0.875rem;
+}
+
+.table thead {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.table thead th {
+  padding: 12px 14px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--transition);
+}
+
+.table tbody tr:hover   { background-color: #f9fafb; }
+.table tbody tr:last-child { border-bottom: none; }
+
+.table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+/* Celda con texto truncado y tooltip nativo */
+.cell-truncate {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.td-actions { display: flex; gap: 6px; }
+
+.text-muted  { color: var(--text-muted); font-style: italic; }
+.text-small  { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ============================================================
+   Badges de estado y prioridad
+   ============================================================ */
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-primary   { background: #dbeafe; color: #1d4ed8; }
+.badge-success   { background: #dcfce7; color: #15803d; }
+.badge-warning   { background: #fef9c3; color: #92400e; }
+.badge-danger    { background: #fee2e2; color: #b91c1c; }
+.badge-secondary { background: #f3f4f6; color: #374151; }
+.badge-info      { background: #cffafe; color: #164e63; }
+
+/* ============================================================
+   Modal
+   ============================================================ */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Se muestra al agregar la clase .active via JS */
+.modal.active { display: flex; }
+
+.modal-dialog {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title { font-size: 1rem; font-weight: 700; }
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
+  line-height: 1;
+}
+.btn-close:hover { background-color: #f3f4f6; }
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================================
+   Página de acceso denegado
+   ============================================================ */
+.denied-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.denied-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 52px 36px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.denied-icon  { font-size: 4rem; margin-bottom: 16px; }
+.denied-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+.denied-msg   { color: var(--text-muted); margin-bottom: 24px; }
+
+/* ============================================================
+   Estados de carga y error en el dashboard
+   ============================================================ */
+.loading-msg {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+.error-msg {
+  text-align: center;
+  padding: 40px;
+  color: var(--danger);
+}
+
+/* ============================================================
+   Responsivo
+   ============================================================ */
+@media (max-width: 640px) {
+  .navbar          { padding: 10px 16px; }
+  .dashboard-body  { padding: 14px; }
+  .section-header  { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .navbar-user     { display: none; }
+  .auth-card       { padding: 24px 20px; }
+}

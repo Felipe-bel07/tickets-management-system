@@ -1,4 +1,4 @@
-const TIMEOUT_DURATION = 300000
+const TIMEOUT_DURATION =  5 * 60 * 1000
 let inactivityTimer = null
 
 //Guardar el usuario que inicia sesión el LS
