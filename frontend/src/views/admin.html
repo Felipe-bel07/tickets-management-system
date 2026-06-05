@@ -2,7 +2,7 @@
 <div class="topbar">
   <div class="admin-crown"><i class="fa-solid fa-crown" style="font-size:11px"></i> ADMINISTRATOR</div>
   <div class="aside-topbar">
-    <button class="btn-new"> Create ticket</button>
+    <button class="btn-new"> Create reservation</button>
 
     <div class="links-pill" id="btn-logout"><i class="fa-solid fa-link"></i> Log Out</div>
 
@@ -18,7 +18,7 @@
   <!-- TICKET TABLE -->
   <div class="panel">
     <div class="panel-header">
-      <span class="panel-title">Tickets</span>
+      <span class="panel-title">Reservation</span>
       <div class="search-small">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input id="admin-search" type="text" placeholder="Search tickets...">
@@ -30,12 +30,13 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Application</th>
-            <th>Applicant</th>
-            <th>Technician</th>
-            <th>Priority</th>
+            <th>Requested by</th>
+            <th>Room</th>
+            <th>Date</th>
+            <th>Starts at</th>
+            <th>Ends at</th>
+            <th>Reason</th>
             <th>Status</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody id="tbody">
@@ -47,15 +48,6 @@
 
    
 
-    <!-- SIDE PANEL -->
-    <div class="side-panel">
 
-      <!-- TECHNICAL USERS -->
-      <div class="mini-card" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
-        <div class="mini-card-title"><i class="fa-solid fa-users"></i> Técnicos activos</div>
-        <div id="table-tech" style="overflow-y:auto; flex:1;"></div>
-      </div>
-    </div>
-  </div>
 
 </div>

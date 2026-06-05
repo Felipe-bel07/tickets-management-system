@@ -3,7 +3,7 @@
   <article class="modal">
 
     <header class="modal-header">
-      <h2 class="modal-title" id="ticket-modal-title">New Ticket</h2>
+      <h2 class="modal-title" id="ticket-modal-title">New Reservation</h2>
       <button class="modal-close" id="modal-close" aria-label="Cerrar">
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -12,47 +12,57 @@
     <form class="modal-form" id="form-ticket">
 
       <fieldset class="form-group">
-        <label for="ticket-title">Title</label>
-        <input type="text" id="ticket-title" placeholder="Enter the ticket title" required>
+        <label for="ticket-title">User</label>
+        <input type="text" id="ticket-title"
+          placeholder="Person that want to reserve the room" required>
       </fieldset>
 
       <fieldset class="form-group">
-        <label for="ticket-desc">Description</label>
-        <textarea id="ticket-desc" rows="4" placeholder="Describe the problem or request" required></textarea>
+        <label for="ticket-desc">Room</label>
+        <textarea id="ticket-desc" rows="1"
+          placeholder="Room you want to reserve" required></textarea>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="reservation-date">Date</label>
+        <input id="reservation-date" type="date">
       </fieldset>
 
       <div class="form-row">
 
         <fieldset class="form-group">
-          <label for="ticket-prioridad">Priority</label>
-          <select id="ticket-prioridad" value="">
-            <option value="">Select...</option>
-            <option value="Imperative">Imperative</option>
-            <option value="high">high</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select>
+          <label for="ticket-prioridad">Starts</label>
+          <input id="reservation-start" type="time">
         </fieldset>
 
         <fieldset class="form-group">
-          <label for="ticket-categoria">Case Type</label>
-           <input type="text" id="ticket-type" placeholder="e.g: incident, request, support" required>
+          <label for="ticket-end">Ends</label>
+          <input id="reservation-end" type="time">
+
         </fieldset>
 
       </div>
 
+      <fieldset class="form-group">
+        <label for="ticket-desc">Reason</label>
+        <textarea id="reservation-reason" rows="1"
+          placeholder="Why do you need the room?" required></textarea>
+      </fieldset>
+
       <fieldset class="form-group" id="ticket-status-group">
         <label for="ticket-status">Status</label>
         <select id="ticket-status">
-          <option value="In Progress">En proceso</option>
-          <option value="Assigned">Asignado</option>
-          <option value="Solved">Solucionado</option>
+          <option value="pending">Pending</option>
+          <option value="approve">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="canceled">Canceled</option>
         </select>
       </fieldset>
 
       <footer class="modal-footer">
         <button type="button" class="btn-cancel" id="btn-cancel">Cancel</button>
-        <button type="submit" class="btn-submit" id="ticket-submit">Create a Ticket</button>
+        <button type="submit" class="btn-submit" id="ticket-submit">Create a
+          Ticket</button>
       </footer>
 
     </form>

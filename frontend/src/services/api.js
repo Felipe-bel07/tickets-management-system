@@ -16,7 +16,7 @@ export async function getTickets() {
 // Obtiene tickets por usuario solicitante.
 export async function getTicketsById(id) {
     try {
-        const response = await dataClient.get(`/tickets?UserId=${id}`);
+        const response = await dataClient.get(`/tickets?serId=${id}`);
         return response.data|| [];
 
     } catch (error) {
@@ -97,10 +97,13 @@ export async function getTicketById(ticketId) {
 export async function updateTicket(ticketId, newTicketData) {
     try {
         const ticketResponse = await dataClient.get(`/tickets/${ticketId}`);
-        const ticketData = ticketResponse.data;
+        const ticketData = ticketResponse.data;        
 
-        ticketData.ticketName = newTicketData.ticketName;
-        ticketData.description = newTicketData.description;
+        ticketData.userID = newTicketData.userID;
+        ticketData.name = newTicketData.name;
+        ticketData.workspace = newTicketData.workspace;
+        ticketData.startHour = newTicketData.startHour;
+        ticketData.endHour = newTicketData.endHour;
         ticketData.priority = newTicketData.priority;
         ticketData.caseType = newTicketData.caseType;
         if (newTicketData.status) {

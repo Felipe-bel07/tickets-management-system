@@ -52,15 +52,17 @@ function filterTickets(tickets, search) {
     return tickets.filter((ticket) => {
         return [
             ticket.id,
-            ticket.ticketName,
-            ticket.description,
-            ticket.requestingClient,
-            ticket.Technician,
-            ticket.priority,
+            ticket.name,
+            ticket.workspace,
+            ticket.date,
+            ticket.startHour,
+            ticket.endHour,
+            ticket.reason,
             ticket.status,
-            ticket.caseType,
         ].some((value) => String(value ?? "").toLowerCase().includes(normalizedSearch));
     });
+
+
 }
 
 // Usa delegacion de eventos para que los botones delete funcionen tras re-render.
@@ -78,16 +80,16 @@ async function oneDeleteClick(event) {
     const id = button.dataset.id;
     if (!id) return;
 
-    const confirmed = confirm("Do you confirm deleting this ticket?");
+    const confirmed = confirm("Do you confirm deleting this reservation?");
     if (!confirmed) return;
 
     try {
         await deleteTicket(id);
         await renderTicketsToAdmin();
-        alert("Ticket deleted successfully.");
+        alert("Reservation deleted successfully.");
     } catch (error) {
         console.error(error);
-        alert("Error deleting the ticket.");
+        alert("Error deleting the reservation.");
     }
 }
 

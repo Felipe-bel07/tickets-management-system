@@ -1,6 +1,6 @@
-# Tickets Management System
+# Reservation Management System
 
-A web application for managing support tickets. It allows users to log in based on their role, view tickets, create new requests, and assign technicians using a simulated backend powered by `json-server`.
+A web application for managing reservation. It allows users to log in based on their role, view reservations, create new requests, and assign technicians using a simulated backend powered by `json-server`.
 
 ## Technologies
 
@@ -13,7 +13,7 @@ A web application for managing support tickets. It allows users to log in based 
 ## Project Structure
 
 ```txt
-tickets-management-system/
+reservation-management-system/
 ├── backend/
 │   ├── auth/
 │   │   └── auth-db.json
@@ -102,9 +102,8 @@ http://localhost:5173
 | Role       | Email                                     | Password |
 | ---------- | ----------------------------------------- | -------- |
 | Admin      | [felipe@test.com](mailto:felipe@test.com) | 123      |
-| Technician | [luis@test.com](mailto:luis@test.com)     | 123      |
 | Client     | [mateo@test.com](mailto:mateo@test.com)   | 123      |
-| Technician | [daniel@test.com](mailto:daniel@test.com) | 123      |
+
 
 ## Main Routes
 
@@ -137,11 +136,17 @@ npm run preview
 * Session persistence using `localStorage`
 * Logout functionality
 * Inactivity timeout
-* Ticket listing for administrators
-* Ticket listing by client
-* Ticket creation
-* Technician assignment to tickets
-* Ticket deletion
+* Reservation listing for administrators
+* Reservation listing by client
+* Reservation creation
+* Reservation deletion
+
+## Role permitions
+
+Admin:
+
+
+User:
 
 ## Development Notes
 

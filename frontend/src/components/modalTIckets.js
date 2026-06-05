@@ -9,9 +9,9 @@ export async function initModalTicket(refreshTickets) {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
   }
 
-  const modal     = document.getElementById('modal-ticket');
-  const btnNew    = document.querySelector('.btn-new');
-  const btnClose  = document.getElementById('modal-close');
+  const modal = document.getElementById('modal-ticket');
+  const btnNew = document.querySelector('.btn-new');
+  const btnClose = document.getElementById('modal-close');
   const btnCancel = document.getElementById('btn-cancel');
   const modalTitle = document.getElementById('ticket-modal-title');
   const btnSubmit = document.getElementById('ticket-submit');
@@ -19,21 +19,21 @@ export async function initModalTicket(refreshTickets) {
   let ticketIdActual = null;
 
   // Abre el modal en modo crear.
-  btnNew   .addEventListener('click', () => {
+  btnNew.addEventListener('click', () => {
     const user = JSON.parse(localStorage.getItem("user"))
     const statusSelect = document.getElementById("ticket-status");
 
     ticketIdActual = null;
     form.reset();
-    modalTitle.textContent = "New Ticket";
-    btnSubmit.textContent = "Create a Ticket";
-    statusSelect.value = "In Progress";
+    modalTitle.textContent = "New reservation";
+    btnSubmit.textContent = "Create a reservation";
+    statusSelect.value = "Pending";
     showStatusByRole(user);
     modal.showModal();
   });
 
   // Cierra el modal y limpia el modo edicion.
-  btnClose .addEventListener('click', () => {
+  btnClose.addEventListener('click', () => {
     ticketIdActual = null;
     modal.close();
   });
@@ -56,12 +56,14 @@ export async function initModalTicket(refreshTickets) {
         return;
       }
 
-      document.getElementById("ticket-title").value = ticket.ticketName;
-      document.getElementById("ticket-desc").value = ticket.description;
-      document.getElementById("ticket-prioridad").value = ticket.priority;
-      document.getElementById("ticket-type").value = ticket.caseType;
-      modalTitle.textContent = "Update Ticket";
-      btnSubmit.textContent = "Update Ticket";
+      document.getElementById("ticket-title").value = ticket.name;
+      document.getElementById("ticket-desc").value = ticket.workspace;
+      document.getElementById("reservation-date").value = ticket.date;
+      document.getElementById("reservation-start").value = ticket.startHour;
+      document.getElementById("reservation-end").value = ticket.endHour;
+      document.getElementById("reservation-reason").value = ticket.reason
+      modalTitle.textContent = "Update reservation";
+      btnSubmit.textContent = "Update reservation";
       statusSelect.value = ticket.status;
       showStatusByRole(user);
 
@@ -70,18 +72,19 @@ export async function initModalTicket(refreshTickets) {
   });
 
   // Decide si el formulario crea un ticket nuevo o actualiza uno existente.
-  form.onsubmit = async (e)=>{
+  form.onsubmit = async (e) => {
     e.preventDefault()
     const user = JSON.parse(localStorage.getItem("user"))
 
     const ticket = {
-       ticketName: document.getElementById("ticket-title").value,
-       description : document.getElementById("ticket-desc").value,
-       priority : document.getElementById("ticket-prioridad").value,
-       caseType : document.getElementById("ticket-type").value,
-       Technician: user.role === "tech" ? user.name : "",
-       UserId : user.id,
-       requestingClient: user.name
+      userId: user.id,
+      name: document.getElementById("ticket-title").value,
+      workspace: document.getElementById("ticket-desc").value,
+      date: document.getElementById("reservation-date").value,
+      startHour: document.getElementById("reservation-start").value,
+      endHour: document.getElementById("reservation-end").value,
+      reason: document.getElementById("reservation-reason").value,
+      status: document.getElementById("ticket-status").value,
     }
 
     if (user.role !== "client") {
@@ -99,16 +102,14 @@ export async function initModalTicket(refreshTickets) {
       modal.close()
       return
     }
-    
+
     if (user.role === "client") {
       // Los clientes siempre crean tickets en progreso.
-      ticket.status = "In Progress"
+      ticket.status = "Pending"
     }
 
     await postTicket(ticket)
-    if (refreshTickets) {
-      await refreshTickets()
-    }
+   
     modal.close()
 
   }
@@ -116,8 +117,8 @@ export async function initModalTicket(refreshTickets) {
 
 // Define permisos para editar segun rol, propiedad del ticket y estado.
 function canEditTicket(user, ticket) {
-  const isOwner = ticket.UserId == user.id;
-  const isClosed = ticket.status === "closed" || ticket.status === "Solved" ;
+  const isOwner = ticket.userId == user.id;
+  const isClosed = ticket.status === "Approved" || ticket.status === "Canceled" ;
 
   if (user.role === "admin") {
     return true;
@@ -127,7 +128,7 @@ function canEditTicket(user, ticket) {
     return true;
   }
 
-  return isOwner && (!ticket.Technician || isClosed);
+  return isOwner && (isClosed);
 }
 
 // Muestra u oculta el campo status segun el rol del usuario.

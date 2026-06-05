@@ -1,6 +1,6 @@
 import { initModalTicket } from "../components/modalTIckets.js";
 import { ticketCard } from "../components/ticketCard.js";
-import { getTickets } from "../services/api.js";
+import { getTickets, deleteTicket } from "../services/api.js";
 import { loadHTML } from "../utils/loadHtml.js";
 import { clearSession } from "../store/session.js";
 
@@ -15,6 +15,8 @@ export async function renderUser() {
     await initModalTicket(renderTickets)
     initLogout()
     initSearch()
+    attachDelete()
+
 }
 
 // Conecta el boton de logout.
@@ -33,7 +35,7 @@ export async function renderTickets() {
     const container = document.getElementById("tickets")
     const user = JSON.parse(localStorage.getItem("user"))
     const tickets = await getTickets();
-    const userTickets = tickets.filter(ticket => ticket.UserId == user.id);
+    const userTickets = tickets.filter(ticket => ticket.userId == user.id);
     const filteredTickets = filterTickets(userTickets, ticketSearch);
     container.innerHTML = filteredTickets.map(ticket => ticketCard(ticket)).join('');
 }
@@ -67,4 +69,31 @@ function filterTickets(tickets, search) {
             ticket.caseType,
         ].some((value) => String(value ?? "").toLowerCase().includes(normalizedSearch));
     });
+}
+
+function attachDelete() {
+    const container = document.getElementById("tickets");
+    if (!container) return;
+    container.addEventListener("click", oneDeleteClick);
+}
+
+// Elimina el ticket seleccionado y refresca la tabla.
+async function oneDeleteClick(event) {
+    const button = event.target.closest("button.del");
+    if (!button) return;
+
+    const id = button.dataset.id;
+    if (!id) return;
+
+    const confirmed = confirm("Do you confirm deleting this reservation?");
+    if (!confirmed) return;
+
+    try {
+        await deleteTicket(id);
+        await renderTickets();
+        alert("Reservation deleted successfully.");
+    } catch (error) {
+        console.error(error);
+        alert("Error deleting the reservation.");
+    }
 }

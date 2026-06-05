@@ -1,125 +1,37 @@
 {
   "tickets": [
     {
-      "id": "2",
-      "ticketName": "New User Creatio",
-      "caseType": "request",
-      "description": "A new user account is requested for a recently hired employe",
-      "priority": "high",
-      "status": "In Progress",
-      "Technician": "Ana Martinez",
-      "userId": 2,
-      "requestingClient": "Juan Perez"
-    },
-    {
-      "id": "3",
-      "ticketName": "VPN Connection Problem",
-      "caseType": "support",
-      "description": "The user is unable to connect to the company VPN while working remotely.",
-      "priority": "low",
-      "status": "In Progress",
-      "Technician": "Daniel",
-      "userId": 3,
-      "requestingClient": "Maria Rodriguez"
-    },
-    {
-      "ticketName": "Printer Not Responding",
-      "description": "cdcdcdcd",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "luis",
-      "status": "In Progress",
       "userId": "1",
-      "requestingClient": "felipe",
-      "id": "MgOoIygJhcg"
+      "name": "Santiago",
+      "workspace": "Sala 2",
+      "date": "2026-06-06",
+      "startHour": "15:18",
+      "endHour": "15:27",
+      "reason": "Sprint planning",
+      "status": "approve",
+      "id": "hnrC19hdjWc"
     },
     {
-      "ticketName": "Printer Not Responding",
-      "description": "cdcdcdcd",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "luis",
-      "status": "In Progress",
       "userId": "1",
-      "requestingClient": "felipe",
-      "id": "VEyyKlbdyJI"
+      "name": "Luis",
+      "workspace": "Sala 4",
+      "date": "2026-06-07",
+      "startHour": "16:35",
+      "endHour": "16:40",
+      "reason": "Business",
+      "status": "approve",
+      "id": "eKqpb4cyQsQ"
     },
     {
-      "ticketName": "juan",
-      "description": "jvjfjvfjjf",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "luis",
-      "userId": "1",
-      "requestingClient": "felipe",
-      "status": "In Progress",
-      "id": "MnFT4uaPWPI"
-    },
-    {
-      "ticketName": "hello",
-      "description": "vfdvffvge",
-      "priority": "Imperative",
-      "caseType": "incident",
-      "Technician": "Daniel",
-      "userId": "4",
-      "requestingClient": "Daniel",
-      "status": "In Progress",
-      "id": "8eRCEf5aXjU"
-    },
-    {
-      "ticketName": "juan",
-      "description": "gnrrhy",
-      "priority": "high",
-      "caseType": "rth",
-      "Technician": "Daniel",
-      "userId": "2",
-      "requestingClient": "luis",
-      "status": "In Progress",
-      "id": "4JOlTZ4mkFQ"
-    },
-    {
-      "ticketName": "lago",
-      "description": "algo",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "Daniel",
-      "userId": "4",
-      "requestingClient": "Daniel",
-      "status": "In Progress",
-      "id": "AFUmx3aqUFg"
-    },
-    {
-      "ticketName": "algo",
-      "description": "algo",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "Daniel",
-      "UserId": "4",
-      "requestingClient": "Daniel",
-      "status": "In Progress",
-      "id": "ubKlJyjvG7Q"
-    },
-    {
-      "ticketName": "algo",
-      "description": "algo",
-      "priority": "high",
-      "caseType": "incident",
-      "Technician": "luis",
-      "UserId": "3",
-      "requestingClient": "mateo",
-      "status": "In Progress",
-      "id": "F9is2smKzCw"
-    },
-    {
-      "ticketName": "algo",
-      "description": "algo",
-      "priority": "",
-      "caseType": "support",
-      "Technician": "",
-      "UserId": "3",
-      "requestingClient": "mateo",
-      "status": "In Progress",
-      "id": "Z6vA3w1K5N4"
+      "userId": "3",
+      "name": "Juan",
+      "workspace": "asdasd",
+      "date": "2026-06-07",
+      "startHour": "15:48",
+      "endHour": "15:48",
+      "reason": "asdasdasd",
+      "status": "pending",
+      "id": "ZTkuln9KhnY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

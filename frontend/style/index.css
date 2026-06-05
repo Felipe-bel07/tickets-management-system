@@ -530,32 +530,6 @@ tbody td {
 .action-btn.del:hover    { color: var(--red);          background: #fef2f2; }
 .action-btn.assign:hover { color: var(--green);        background: #f0fdf4; }
 
-/* ============================================================
-   SIDE PANEL
-   ============================================================ */
-.side-panel {
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.mini-card {
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 16px;
-}
-
-.mini-card-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--text-light);
-  margin-bottom: 12px;
-  display: flex; align-items: center; gap: 6px;
-}
 
 /* ── Tech list ── */
 .tech-list-item {
